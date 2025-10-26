@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Post List</title>
+</head>
+<body>
+    <h1>Post List</h1>
+    <ul>
+      {% for post in posts %}
+      <li>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <!--<div>{{ post.comment_set.all }}</div>-->
+        <ul>
+          {% for comment in post.comment_set.all %}
+          <li>{{ comment.content }}</li>
+          {% empty %}
+          <li>아직 댓글이 없습니다.</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+</body>
+</html>
